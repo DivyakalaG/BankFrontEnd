@@ -3,12 +3,14 @@ Basic Building Blocks
 1) Module--> To import 3rd party modules(root module)
 2) Component--> To create html, css and ts file
 
+--------------------------------------------------------------
 Basic Commands
 
 1) ng new project_name --> To create a new project
 2) ng g c Component_name --> To create a new component
 3) ng serve --open --> To rum Anugular file
 
+-------------------------------------------------------------
 Basic Concepts
 
 1) Data Binding --> Share data btwn components
@@ -17,16 +19,22 @@ ts file --> component
 html file --> view
 
 data sharing happens btwn ts n html file
+----------------------------------------
 
 a) One way data binding --> 1 direction(either component to view or viceversa)
 
 a.1) Component to View (ts->html)
 
 i) String Interpolation (1 direction) --> {{expression}}
+
 ii) Property Binding --> [attribute name]="property"
+
+---------------------------------------------------------------
 
 a.2)View to Component (html->ts)
 
 i) Event binding --> (event_name)="function_name()";
+
 ii)Event binding using $event-->(event_name)="function_name($event)";
 
+iii)Event binding using template referencing variable= #variable_name

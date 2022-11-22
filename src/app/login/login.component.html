@@ -2,17 +2,17 @@
     <div class="col-4"></div>
     <div class="col-4 m-3 ">
         <form action="" class="bank p-5 border border-3 rounded-3 shadow-lg w-75"
-            style="background-color: rgb(230, 227, 223);">
+            style="background-color: rgb(230, 227, 223); border-color: rgb(130, 129, 129);">
             <img
                     src="https://e7.pngegg.com/pngimages/19/546/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-white.png"
                     alt="" width="80px" height="80px" 
                     style="border-radius:50px ; border: 5px double rgb(220, 215, 215); margin-left:80px ; ">
             <h5 style="text-align:center ; margin: 15px;">My Bank</h5><h6 style="margin-left: 15px; margin-top: -10px;">{{aim}}</h6>
-            <input (change)="acnoChange($event)" type="text" id="acno" [placeholder]="account" class="form-control rounded-4 "
+            <input #acno name="acno" type="text" id="acno" [placeholder]="account" class="form-control rounded-4 "
                 style="background-color:rgb(206, 204, 201) ; box-shadow: inset;margin-top: 40px;">
-            <input (change)="pswdChange($event)" type="text" id="pass" placeholder="Password" class="form-control mt-3 rounded-4"
+            <input #pswd name="password" type="text" id="pass" placeholder="Password" class="form-control mt-3 rounded-4"
                 style="background-color:rgb(206, 204, 201) ; box-shadow: inset;">
-            <input type="button" id="login" value="Login" (click)="signin()" class="form-control mt-3 mb-5 rounded-4 bg-primary text-light">
+            <input type="button" id="login" value="Login" (click)="signin(acno,pswd)" class="form-control mt-3 mb-5 rounded-4 bg-primary text-light">
            <span style="margin-left: 30px; padding-bottom: 20px;"> <a href="#" style="text-decoration:none ;">forgot pasword?</a> Or <a href="#" onclick="signuplink()" style="text-decoration:none;">Sign up</a></span>
 
         </form>
