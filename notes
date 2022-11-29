@@ -8,7 +8,7 @@ Basic Commands
 
 1) ng new project_name --> To create a new project
 2) ng g c Component_name --> To create a new component
-3) ng serve --open --> To rum Anugular file
+3) ng serve --open --> To run the Anugular file
 
 -------------------------------------------------------------
 Basic Concepts
@@ -19,7 +19,7 @@ ts file --> component
 html file --> view
 
 data sharing happens btwn ts n html file
-----------------------------------------
+-----------------------------
 
 a) One way data binding --> 1 direction(either component to view or viceversa)
 
@@ -29,7 +29,7 @@ i) String Interpolation (1 direction) --> {{expression}}
 
 ii) Property Binding --> [attribute name]="property"
 
----------------------------------------------------------------
+----------------------------
 
 a.2)View to Component (html->ts)
 
@@ -38,3 +38,65 @@ i) Event binding --> (event_name)="function_name()";
 ii)Event binding using $event-->(event_name)="function_name($event)";
 
 iii)Event binding using template referencing variable= #variable_name
+
+---------------------------------------------------------------------------------
+
+b) Two way data binding --> 2 direction(ts->html, html->ts)
+
+i)ngModel - FormsModule (in app.module.ts)- [(ngModel)]='property_name'
+
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+2)Angular Routing --> To set path for a component ie. to go from one page to another (path setting happen in app-routing.mod.ts)
+
+    {
+        path:"value",component:class_name
+    }
+
+    eg. login
+        {
+            path:'',component:LoginComponent (this is class_name taken from lgin.component.ts)
+        },
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+3) Dependency Injection--> To share data btwn two dependent classes
+
+        eg. Router Class - navigateByUrl is used to navigate the component
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+4) Angular Service --> To hold redundant datas...(ie.duplicate) a type of server
+
+    ng g s service_name
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+5) Angular Directives --> To manipulate DOM
+
+a)Component Directives(will be in array format)
+b)Structural Directives(will be in table format)
+
+ content in ts should reflect in html in table for transaction history
+
+   1)*ngFor (like normal for loop)
+
+   
+--------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+6) Angular Forms --> provides designs for html page
+
+ a)Template Driven Forms(first designs the html page and cannot do validation)
+ b)Model Driven Forms(first designs model in ts file and easy validation methods) --> used for Advanced validation
+
+    b.1)Reactive Forms (form group, array, control) --> can directly add validation via importing this form

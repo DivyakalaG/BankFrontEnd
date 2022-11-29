@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../Services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -26,18 +28,14 @@ pswd='';
 
 //properties/variables
 //userdefined mtds --> 4th execution happen from userdefined mtd
-userDetails:any={
-  1000: {acno:1000, username:'Divya', password:1000, balance:2000},
-  1001: {acno:1001, username:'Gokul', password:1001, balance:2000},
-  1002: {acno:1002, username:'Tejasswi',password:1002, balance:2000} 
-}
 
 
 
 
 
 
-  constructor() {
+//dependency injection
+  constructor(private ds:DataService, private router:Router) {
 // 1st execution happen from constructor
 // It automatically invokes when the obj is created
 
@@ -68,27 +66,62 @@ userDetails:any={
     
   }
 
-  signin(a:any,p:any)
+  // signin(a:any,p:any)
+  // {
+  //   //alert('Login clicked')
+     
+  // var acno=a.value;
+  // var pswd=p.value;
+  // var userDetails=this.userDetails;
+  
+  // if(acno in userDetails)
+  // {
+  //   if(pswd==userDetails[acno]['password'])
+  //   {
+  //     alert('Login successfull');
+  //   }
+  //   else{
+  //     alert('Invalid password');
+  //   }
+  // }
+  // else{
+  //   alert('Invalid user details');
+  // }
+
+  // }
+
+  signin()
   {
     //alert('Login clicked')
      
-  var acno=a.value;
-  var pswd=p.value;
-  var userDetails=this.userDetails;
-  
-  if(acno in userDetails)
+  var acno=this.acno;
+  var pswd=this.pswd;
+  var userDetails=this.ds.userDetails;
+
+  const result=this.ds.login(acno,pswd)
+  if(result)
   {
-    if(pswd==userDetails[acno]['password'])
-    {
-      alert('Login successfull');
-    }
-    else{
-      alert('Invalid password');
-    }
+    alert('Login Successfull')
+    this.router.navigateByUrl('dashboard')  //dependency injection
   }
   else{
-    alert('Invalid user details');
+    alert('Login Failed')
   }
+  
+  // if(acno in userDetails)
+  // {
+  //   if(pswd==userDetails[acno]['password'])
+  //   {
+  //     alert('Login successfull');
+  //     this.router.navigateByUrl('dashboard')
+  //   }
+  //   else{
+  //     alert('Invalid password');
+  //   }
+  // }
+  // else{
+  //   alert('Invalid user details');
+  // }
 
   }
 

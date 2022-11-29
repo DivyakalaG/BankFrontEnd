@@ -1,0 +1,20 @@
+<h1 style="text-align:center ; color:rgb(0, 0, 0); margin:10px; font-weight: 800;">TRANSACTION HISTORY</h1>
+<div style="margin-right:70px ; float:right ">
+    <a routerLink="/dashboard">Go Back</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th style=" color: black;font-size: 25px; text-decoration: underline;">TYPE</th>
+            <th style=" color: black;font-size: 25px; text-decoration: underline;">AMOUNT</th>
+        </tr>
+    </thead>
+    <tbody>
+
+<!-- initially create rows for credit and debit then last delete debit row and modify credit row as shown-->
+        <tr *ngFor="let t of transaction">
+        <th>{{t.TYPE}}</th>
+        <th>{{t.AMOUNT}}</th>
+    </tr>
+    </tbody>
+</table>
