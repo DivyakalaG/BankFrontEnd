@@ -89,6 +89,7 @@ b)Structural Directives(will be in table format)
  content in ts should reflect in html in table for transaction history
 
    1)*ngFor (like normal for loop)
+   ngIf
 
    
 --------------------------------------------------------------------------------
@@ -100,3 +101,30 @@ b)Structural Directives(will be in table format)
  b)Model Driven Forms(first designs model in ts file and easy validation methods) --> used for Advanced validation
 
     b.1)Reactive Forms (form group, array, control) --> can directly add validation via importing this form
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+7) Local Storage
+
+ -setItem --> To store data
+ -getItem --> To retrieve data
+ -removeItem --> to remove data
+
+ ------------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------------
+  8) Parent Child Communication
+
+  Parent-> Child
+  Child -> Parent
+
+  eg: Dashboard -> Parent
+      Delete -> Child
+
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+9) Angular Pipes -> for any kind of transformation ie conversion 
+     
+     ie. eg: convert dollar to rupee
+     {{ value_expression | date [ : format [ : timezone [ : locale ] ] ] }}

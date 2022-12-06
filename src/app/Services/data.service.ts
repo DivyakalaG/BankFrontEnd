@@ -5,7 +5,42 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  constructor() { }
+  constructor() { 
+    this.getDetails();
+  }
+
+  //saveDetails() - to store data in the local storage
+
+  saveDetails(){
+    if(this.userDetails)
+    {
+      localStorage.setItem('Database',JSON.stringify(this.userDetails))
+    }
+    if(this.currentUser)
+    {
+      localStorage.setItem('CurrentUser',JSON.stringify(this.currentUser))
+    }
+    if(this.currentAcno)
+    {
+      localStorage.setItem('CurrentAcno',JSON.stringify(this.currentAcno))
+    }
+  }
+
+  getDetails()
+  {
+    if(this.userDetails)
+    {
+      this.userDetails=JSON.parse(localStorage.getItem('Database')||'')
+    }
+    if(this.currentUser)
+    {
+      this.currentUser=JSON.parse(localStorage.getItem('CurrentUser')||'')
+    }
+    if(this.currentAcno)
+    {
+      this.currentAcno=JSON.parse(localStorage.getItem('CurrentAcno')||'')
+    }
+  }
 
   //current user
   currentUser="";
@@ -36,6 +71,7 @@ export class DataService {
         transaction:[]
       }
       console.log(userDetails);
+      this.saveDetails();
       
       return true;
     }
@@ -50,7 +86,8 @@ export class DataService {
 
  {
   this.currentUser=userDetails[acno]['username']
-  this.currentAcno=acno; //for transaction history
+  this.currentAcno=acno; 
+  this.saveDetails();//for transaction history
   return true;
  }
  else{
@@ -77,6 +114,7 @@ deposit(acno:any,pswd:any,amt:any){
 
     })
     console.log(userDetails);
+    this.saveDetails();
     
     return  userDetails[acno]['balance']
   }
@@ -108,6 +146,7 @@ withdraw(acno:any,pswd:any,amt:any)
       AMOUNT:amount
 
     })
+    this.saveDetails();
     return  userDetails[acno]['balance']
   }
   else{

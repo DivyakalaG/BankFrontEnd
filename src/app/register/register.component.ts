@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../Services/data.service';
 
@@ -11,46 +11,53 @@ import { DataService } from '../Services/data.service';
 export class RegisterComponent implements OnInit {
 
 
-  uname="";
-  acno="";
-  pswd="";
+  uname = "";
+  acno = "";
+  pswd = "";
 
-//for reactive forms.. registermodel
-  registerForm=this.fb.group({ //group
-    uname:[''],//array
-    acno:[''],
-    pswd:['']
+  //for reactive forms.. registermodel
+
+  registerForm = this.fb.group({ //group
+    uname: ['',[Validators.required, Validators.pattern('[a-zA-Z]*')]],//array   ....for validation add inside array
+    acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+    pswd: ['', [Validators.required, Validators.pattern('[0-9a-zA-Z]*')]]
   })
-  //control -> ts file model linked to html file
-  
 
-  constructor(private router:Router, private ds:DataService, private fb:FormBuilder) { }
+  //control -> ts file model linked to html file
+
+
+  constructor(private router: Router, private ds: DataService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  register()
-  {
+  signup() {
+
     console.log(this.registerForm); // in console new registered value will be empty so in signup change this.uname,etc to form
-    
-  }
-  signup(){
+
     // alert('clicked');
-    var username=this.registerForm.value.uname;
-    var password=this.registerForm.value.pswd;
-    var acno=this.registerForm.value.acno;
-    const result=this.ds.register(acno,username,password);
-    
-// if true from ds file below will continue
-    if(result)
-    {
-      alert('Register Successfull')
-      this.router.navigateByUrl('')
+    var username = this.registerForm.value.uname;
+    var password = this.registerForm.value.pswd;
+    var acno = this.registerForm.value.acno;
+    if (this.registerForm.valid) {
+
+      console.log(this.registerForm.get('uname')?.errors);
+      
+      const result = this.ds.register(acno, username, password);
+
+      // if true from ds file below will continue
+      if (result) {
+        alert('Register Successfull')
+        this.router.navigateByUrl('')
+      }
+      else {
+        alert('Registration failed')
+        this.router.navigateByUrl('register')
+      }
+
     }
-    else{
-      alert('Registration failed')
-      this.router.navigateByUrl('register')
+    else {
+      alert('Invalid form')
     }
-    
   }
 }

@@ -10,19 +10,30 @@
                 <h5 style="text-align:center ; margin: 15px;">My Bank</h5>
 
             <form [formGroup]="registerForm"> 
+
                 <!-- form controls to be given here as shown down -->
+
                 <input formControlName="uname" name="username" type="text" id="uname" placeholder="Username"
                     class="form-control rounded-4 " style="background-color:rgb(206, 204, 201) ; border-style: inset;">
-
-                <input formControlName="acno" name="Account no" type="text" id="accno" placeholder="Account Number"
+                    <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color:red ;">Invalid User</div>
+<!-- in forms we get invalid user so for tat we use ngIf -->
+                
+                
+                    <input formControlName="acno" name="Account no" type="text" id="accno" placeholder="Account Number"
                     class="form-control mt-3 rounded-4"
                     style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                    <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" style="color:red ;">Invalid Account Number</div>
 
-                <input formControlName="pswd" name="Password" type="password" id="pswd" placeholder="Password"
+                    
+               
+                    <input formControlName="pswd" name="Password" type="password" id="pswd" placeholder="Password"
                     class="form-control mt-3 rounded-4"
                     style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                    <div *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color:red ;">Invalid Password</div>
 
-                <input type="button" id="register" (click)="signup()" value="Register"
+
+               
+                    <input type="button" id="register" (click)="signup()" value="Register"
                     class="form-control mt-4 mb-3 rounded-4 bg-primary text-light">
                
                     <span style="margin-left: 90px;"><a routerLink="" style="text-decoration:none ;">Sign in</a></span>
