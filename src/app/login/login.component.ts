@@ -108,18 +108,35 @@ loginForm = this.fb.group({ //group
 
   if (this.loginForm.valid) {
 
-  const result=this.ds.login(acno,pswd)
-  if(result)
-  {
-    alert('Login Successfull')
-    this.router.navigateByUrl('dashboard')  //dependency injection
-  }
-  else{
-    alert('Login Failed')
-  }
-}else{
-  alert('Invalid form')
-}
+    var acno=this.loginForm.value.acno;
+    var pswd=this.loginForm.value.pswd;
+
+  this.ds.login(acno,pswd)
+  .subscribe((result:any)=>{
+
+    localStorage.setItem('currentUser',JSON.stringify(result.currentUser))
+    localStorage.setItem('currentAcno',JSON.stringify(result.currentAcno))
+    localStorage.setItem('token',JSON.stringify(result.token))
+
+    alert(result.message);
+    this.router.navigateByUrl('dashboard')
+  },
+  result=>{
+    alert(result.error.message)   // now also comment tat dashboard ngonit msg else while login it shows tat msg as alert
+  })
+
+//   const result=this.ds.login(acno,pswd)
+//   if(result)
+//   {
+//     alert('Login Successfull')
+//     this.router.navigateByUrl('dashboard')  //dependency injection
+//   }
+//   else{
+//     alert('Login Failed')
+//   }
+// }else{
+//   alert('Invalid form')
+// }
   
   // if(acno in userDetails)
   // {
@@ -138,4 +155,4 @@ loginForm = this.fb.group({ //group
 
   }
 
-}
+}}

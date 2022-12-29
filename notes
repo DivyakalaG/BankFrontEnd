@@ -11,6 +11,16 @@ Basic Commands
 3) ng serve --open --> To run the Anugular file
 
 -------------------------------------------------------------
+
+For creating a new project
+
+1) Open angular folder -> cmd -> ng new project_name
+2) then in cmd once its installed successfully we get "Successfully initialized git."-> cd project_name
+3) Now to open the newly created project in browswer -> ng serve --open
+
+---------------------------------------------------------------
+
+
 Basic Concepts
 
 1) Data Binding --> Share data btwn components
@@ -74,7 +84,9 @@ i)ngModel - FormsModule (in app.module.ts)- [(ngModel)]='property_name'
 --------------------------------------------------------------------------------
 
 4) Angular Service --> To hold redundant datas...(ie.duplicate) a type of server
-
+    
+    create a folder in src->app->services open tat folder in terminal and run the below code for dataservice.
+    
     ng g s service_name
 
 

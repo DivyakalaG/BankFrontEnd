@@ -2,6 +2,6 @@
 <!-- tat is if acno comes in item then this div should appear once the delete button is clicked -->
 
     <h3>Are you sure you want to delete this account?{{item}}</h3>
-    <button class="btn btn-danger m-3">Yes</button>
+    <button class="btn btn-danger m-3" (click)="delete()">Yes</button>
     <button class="btn btn-success m-3" (click)="cancel()" >No</button>
 </div>

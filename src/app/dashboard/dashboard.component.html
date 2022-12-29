@@ -10,40 +10,41 @@
     <h3 style="margin:28px ; text-align: center;">Welcome <span style="color:red ; font-weight: 900; ">{{user}}!</span> </h3>
     <a style="margin:10px ;" routerLink="/transaction">View Transaction History</a>
 </div>
-
-<app-delete [item]="acno" (onCancel)="onCancel()"></app-delete> 
+<!-- child component -->
+<app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)"></app-delete> 
+<!-- now define it in dashboard ts file -->
 
     <div class="child" [ngClass]="acno? 'style1': '' ">
 
 
         <div action="" class="bank p-5 border border-3 rounded-3 shadow-lg w-100"
-            style="background-color: rgb(230, 227, 223);">
+            style="background-color: rgb(189, 189, 189);">
 
             <img src="https://e7.pngegg.com/pngimages/19/546/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-white.png"
                 alt="" width="80px" height="80px"
-                style="border-radius:50px ; border: 5px double rgb(220, 215, 215); margin-left: 65px;">
+                style="border-radius:50px ; border: 10px double rgb(220, 215, 215); margin-left: 65px;">
 
             <h5 style="text-align:center ; margin: 15px;">Deposit</h5>
 
             <form [formGroup]="depositForm">
 
             <input formControlName="acno" name="Account no" type="text" id="accno" placeholder="Account Number"
-                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 206, 206) ; border-style: inset;">
                 <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" style="color:red ;">Invalid Account Number</div>
 
 
             <input formControlName="pswd" name="Password" type="password" id="pswd" placeholder="Password"
-                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 204, 201) ;  border-style: inset;">
+                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 206, 206) ;  border-style: inset;">
                 <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched" style="color:red ;">Invalid Password</div>
 
 
             <input formControlName="amount" name="amount" type="text" id="uname" placeholder="Amount"
                 class="form-control rounded-4 "
-                style="background-color:rgb(206, 204, 201) ;margin-top: 20px; border-style: inset;">
+                style="background-color:rgb(207, 207, 207) ;margin-top: 20px; border-style: inset;">
                 <div *ngIf="this.depositForm.get('amount')?.errors && this.depositForm.get('amount')?.touched" style="color:red ;">Invalid Amount</div>
 
 
-            <input type="button" id="deposit" (click)="deposit()" value="Deposit"
+            <input type="button" id="dept" (click)="deposit()" value="Deposit"
                 class="form-control mt-4 mb-3 rounded-4 bg-primary text-light">
 
             </form>
@@ -57,7 +58,7 @@
 
 
         <div class="bank p-5 border border-3 rounded-3 shadow-lg w-100"
-            style="background-color: rgb(230, 227, 223); border-color: rgb(130, 129, 129);">
+            style="background-color: rgb(188, 188, 188); border-color: rgb(130, 129, 129);">
 
             <img src="https://e7.pngegg.com/pngimages/19/546/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-white.png"
                 alt="" width="80px" height="80px"
@@ -68,17 +69,17 @@
             <form [formGroup]="withdrawForm">
 
             <input formControlName="acno1" type="text" id="acno1" placeholder="Account Number" name="accountno"
-                class="form-control rounded-4 " style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                class="form-control rounded-4 " style="background-color:rgb(208, 208, 208) ; border-style: inset;">
                 <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" style="color:red ;">Invalid Account Number</div>
 
 
             <input formControlName="pswd1" name="password" type="password" id="pswd1" placeholder="Password"
-                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                class="form-control mt-3 rounded-4" style="background-color:rgb(208, 207, 207) ; border-style: inset;">
                 <div *ngIf="this.withdrawForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched" style="color:red ;">Invalid Password</div>
 
 
             <input formControlName="amount1" name="amount" type="text" id="amt1" placeholder="Amount"
-                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 204, 201) ; border-style: inset;">
+                class="form-control mt-3 rounded-4" style="background-color:rgb(206, 206, 206) ; border-style: inset;">
                 <div *ngIf="this.withdrawForm.get('amount1')?.errors && this.withdrawForm.get('amount1')?.touched" style="color:red ;">Invalid Amount</div>
 
 
